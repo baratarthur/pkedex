@@ -1,0 +1,16 @@
+<div class="card">
+    <div class="card__info" *ngIf="data; else loading">
+        <img class="card__image"
+            [src]="data.sprites.other['official-artwork'].front_default"
+            [alt]="data.name">
+        <h4 class="card__name">{{pokemonName}}</h4>
+        <div class="card__status">
+            <app-status *ngFor="let status of data.stats.slice(0, 2)"
+                [name]="status.stat.name"
+                [value]="status.base_stat" />
+        </div>
+    </div>
+    <ng-template #loading>
+        <span>carregando...</span>
+    </ng-template>
+</div>

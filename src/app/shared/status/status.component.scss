@@ -1,0 +1,14 @@
+.status {
+    display: flex;
+    flex-direction: column;
+    margin: 8px 0;
+
+    .value {
+        width: 100%;
+        padding: 4px 0;
+        text-align: center;
+        border-radius: 4px;
+        color: var(--text-accent);
+        background-color: red;
+    }
+}

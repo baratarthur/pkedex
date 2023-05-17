@@ -1,0 +1,15 @@
+<main>
+    <header>
+        <h1>Pokedex</h1>
+        <h3>{{numberOfPokemons}} pokemons found!</h3>
+    </header>
+    <section class="pokemons">
+        <app-card *ngFor="let pokemon of pokemons"
+            [pokemonName]="pokemon.name"/>
+        <button id="load-more"
+            class="load-more"
+            (click)="loadPokemons()">
+            load more
+        </button>
+    </section>
+</main>

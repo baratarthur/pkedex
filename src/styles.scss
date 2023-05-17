@@ -1,1 +1,23 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.cdnfonts.com/css/utendo');
+
+* {
+    box-sizing: border-box;
+    font-family: 'Utendo', sans-serif;
+}
+
+html, body {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+}
+
+:root {
+    --primary: #e4000f;
+    
+    --card: #c2c2c2;
+    --border: #d1d1d1;
+
+    --text-accent: #fff;
+    --white: #fff;
+}
