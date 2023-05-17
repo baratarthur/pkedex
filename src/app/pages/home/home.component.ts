@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
   private loadMoreUrl = '';
 
   constructor(
-    private pokedexService: PokedexService,
+    public pokedexService: PokedexService,
   ) {}
 
   ngOnInit(): void {
@@ -38,6 +38,7 @@ export class HomeComponent implements OnInit {
           ];
           this.numberOfPokemons = response.count;
           this.loadMoreUrl = response.next;
+          this.pokedexService.finishLoading();
         }
       );
   }

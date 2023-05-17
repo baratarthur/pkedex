@@ -4,6 +4,8 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { PokedexService } from './pokedex.service';
 import { HttpClient } from '@angular/common/http';
 import { pokemon, pokemons } from '../testing/pokemon.mock';
+import { INITIAL_OFFSET } from '@config/constants';
+import { PAGINATION_SIZE } from '@config/constants';
 
 describe('PokedexService', () => {
   let httpClient: HttpClient;
@@ -36,7 +38,9 @@ describe('PokedexService', () => {
     it('should call the API correctly', () => {
       service.getPokemons().subscribe();
 
-      const req = httpTestingController.expectOne(`${service.url}?offset=0&limit=6`);
+      const req = httpTestingController.expectOne(
+        `${service.url}?offset=${INITIAL_OFFSET}&limit=${PAGINATION_SIZE}`
+      );
       expect(req.request.method).toBe('GET');
     });
 
@@ -46,7 +50,7 @@ describe('PokedexService', () => {
       });
 
       httpTestingController
-        .expectOne(`${service.url}?offset=0&limit=6`)
+        .expectOne(`${service.url}?offset=${INITIAL_OFFSET}&limit=${PAGINATION_SIZE}`)
         .flush(pokemons);
     });
 
@@ -58,6 +62,27 @@ describe('PokedexService', () => {
       const req = httpTestingController.expectOne(nextUrl);
       
       expect(req.request.method).toBe('GET');
+    });
+
+    it('should load while fetching all pokemons', () => {
+      const nextUrl = '/test';
+
+      service.getPokemons(nextUrl).subscribe(() => {
+        expect(service.loading).toBeTrue();
+      });
+
+      httpTestingController.expectOne(nextUrl).flush(pokemons);
+    });
+
+    it('should stop loading after call', () => {
+      const nextUrl = '/test';
+
+      service.getPokemons(nextUrl).subscribe(() => {
+        service.finishLoading();
+        expect(service.loading).toBeFalse();
+      });
+
+      httpTestingController.expectOne(nextUrl).flush(pokemons);
     });
   });
 

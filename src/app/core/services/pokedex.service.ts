@@ -12,12 +12,14 @@ import { INITIAL_OFFSET, PAGINATION_SIZE } from '@config/constants';
 })
 export class PokedexService {
   public url = `${environment.pokeapiUrl}/pokemon`;
+  public loading: boolean = false;
 
   constructor(
     private http: HttpClient,
   ) {}
 
   getPokemons(nextUrl: string = ''): Observable<Response<PokemonBasic>> {
+    this.startLoading();
     if(nextUrl) return this.http.get<Response<PokemonBasic>>(nextUrl);
     
     const params = new HttpParams()
@@ -29,5 +31,13 @@ export class PokedexService {
 
   getPokemon(name: string): Observable<Pokemon> {
     return this.http.get<Pokemon>(`${this.url}/${name}`);
+  }
+
+  startLoading(): void {
+    this.loading = true;
+  }
+
+  finishLoading(): void {
+    this.loading = false;
   }
 }

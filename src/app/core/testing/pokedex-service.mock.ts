@@ -9,5 +9,6 @@ export const pokedexServiceMock: Partial<PokedexService> = {
     },
     getPokemon: function (name: string): Observable<Pokemon> {
         return of(pokemon);
-    }
+    },
+    finishLoading: () => {},
 }

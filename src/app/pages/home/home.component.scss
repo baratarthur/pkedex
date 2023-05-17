@@ -50,5 +50,13 @@ main {
             color: var(--text-accent);
             background-position: left bottom;
         }
+
+        &:disabled {
+            cursor: default;
+            color: var(--disabled-text);
+            background: var(--disabled);
+
+            &:hover {}
+        }
     }
 }

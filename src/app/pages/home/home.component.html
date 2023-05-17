@@ -8,6 +8,7 @@
             [pokemonName]="pokemon.name"/>
         <button id="load-more"
             class="load-more"
+            [disabled]="pokedexService.loading"
             (click)="loadPokemons()">
             load more
         </button>
