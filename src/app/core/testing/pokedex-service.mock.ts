@@ -11,4 +11,6 @@ export const pokedexServiceMock: Partial<PokedexService> = {
         return of(pokemon);
     },
     finishLoading: () => {},
+    setPokemon: () => {},
+    clearPokemon: () => {},
 }

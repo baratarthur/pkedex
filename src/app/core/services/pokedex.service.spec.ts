@@ -99,4 +99,12 @@ describe('PokedexService', () => {
         .flush(pokemon);
     });
   });
+
+  describe('service behaviors', () => {
+    it('should set pokemon', () => {
+      service.setPokemon(pokemon);
+
+      expect(service.pokemon).toBe(pokemon);
+    });
+  });
 });

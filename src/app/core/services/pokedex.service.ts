@@ -11,8 +11,9 @@ import { INITIAL_OFFSET, PAGINATION_SIZE } from '@config/constants';
   providedIn: 'root'
 })
 export class PokedexService {
-  public url = `${environment.pokeapiUrl}/pokemon`;
-  public loading: boolean = false;
+  url = `${environment.pokeapiUrl}/pokemon`;
+  loading: boolean = false;
+  pokemon: Pokemon | undefined;
 
   constructor(
     private http: HttpClient,
@@ -39,5 +40,13 @@ export class PokedexService {
 
   finishLoading(): void {
     this.loading = false;
+  }
+
+  setPokemon(p: Pokemon): void {
+    this.pokemon = p;
+  }
+
+  clearPokemon(): void {
+    this.pokemon = undefined;
   }
 }

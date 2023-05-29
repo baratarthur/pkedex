@@ -53,5 +53,7 @@ export const pokemon: Pokemon = {
     stats: [
         {base_stat: -1, stat: {name: 'test 1', url: ''}, effort:0},
         {base_stat: -1, stat: {name: 'test 2', url: ''}, effort:0},
-    ]
+    ],
+    types: [],
+    abilities: [],
 }

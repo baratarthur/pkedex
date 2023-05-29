@@ -16,6 +16,8 @@ export interface Pokemon {
     species: DataFormat;
     sprites: Sprite;
     stats: Status[];
+    abilities: Ability[];
+    types: Type[]
 }
 
 interface DataFormat {
@@ -50,8 +52,19 @@ interface Sprite {
     }
 }
 
-interface Status {
+export interface Status {
     base_stat: number;
     effort: number;
     stat: DataFormat;
+}
+
+export interface Ability {
+    id: number;
+    is_hidden: boolean;
+    ability: DataFormat;
+}
+
+export interface Type {
+    slot: number;
+    type: DataFormat;
 }

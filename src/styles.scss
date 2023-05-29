@@ -17,10 +17,35 @@ html, body {
     
     --card: #c2c2c2;
     --border: #d1d1d1;
+    --border-accent: #010101;
+    --hover: #878787;
 
+    --text: #343434;
     --text-accent: #fff;
     --white: #fff;
 
     --disabled: #b7b7b7;
     --disabled-text: #f7f7f7;
+
+    // types colors
+    --normal: #787878;
+    --fire: #cc0000;
+    --water: #2a75bb;
+    --grass: #3a5f0b;
+    --poison: #7718be;
+    --electric: #ffcb05;
+
+    // status colors
+    --hp: #12d900;
+    --hp-accent: #2f2f2f;
+    --attack: var(--primary);
+    --attack-accent: #f2f2f2;
+    --defense: #43464b;
+    --defense-accent: #f2f2f2;
+    --special-attack: #daaf37;
+    --special-attack-accent: #2f2f2f;
+    --special-defense: #b9f2ff;
+    --special-defense-accent: #2f2f2f;
+    --speed: #d5edff;
+    --speed-accent: #2f2f2f;
 }

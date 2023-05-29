@@ -5,6 +5,10 @@ const routes: Routes = [
   {
     path: '',
     loadComponent: () => import('./pages/home/home.component').then(m => m.HomeComponent)
+  },
+  {
+    path: 'pokemon',
+    loadComponent: () => import('./pages/pokemon-info/pokemon-info.component').then(m => m.PokemonInfoComponent),
   }
 ];
 

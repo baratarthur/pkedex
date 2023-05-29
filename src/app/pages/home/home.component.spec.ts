@@ -7,10 +7,13 @@ import { By } from '@angular/platform-browser';
 import { PokedexService } from '@service/pokedex.service';
 import { pokedexServiceMock } from '@testing/pokedex-service.mock';
 import { pokemons } from '@testing/pokemon.mock';
+import { pokemon } from '@testing/pokemon.mock';
+import { CardComponent } from '@component/card/card.component';
 
 describe('HomeComponent', () => {
   let httpClient: HttpClient;
   let httpController: HttpTestingController;
+  let pokedexService: PokedexService;
 
   let component: HomeComponent;
   let fixture: ComponentFixture<HomeComponent>;
@@ -84,5 +87,27 @@ describe('HomeComponent', () => {
       expect(component.pokemons.length).toBe(pokemons.results.length * 2);
       expect(component.numberOfPokemons).toBe(pokemons.count);
     }));
+  });
+
+  describe('navigation behavior', () => {
+    beforeEach(async () => {  
+      pokedexService = TestBed.inject(PokedexService);
+      httpClient = TestBed.inject(HttpClient);
+      httpController = TestBed.inject(HttpTestingController);
+
+      fixture = TestBed.createComponent(HomeComponent);
+      component = fixture.componentInstance;
+      fixture.detectChanges();
+    });
+
+    it('should set pokemon on click', () => {
+      const setPokemonSpy = spyOn(pokedexService, 'setPokemon');
+      const navigateSpy = spyOn(component.router, 'navigate');
+
+      component.navigateTo(pokemon);
+
+      expect(setPokemonSpy).toHaveBeenCalledWith(pokemon);
+      expect(navigateSpy).toHaveBeenCalledWith(['/pokemon']);
+    });
   });
 });

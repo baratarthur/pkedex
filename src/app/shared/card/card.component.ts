@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { Pokemon } from '@model/Pokemon';
@@ -17,6 +17,7 @@ import { StatusComponent } from '@component/status/status.component';
 })
 export class CardComponent implements OnInit {
   @Input() pokemonName: string = '';
+  @Output() onClick: EventEmitter<Pokemon> = new EventEmitter<Pokemon>();
 
   public data: Pokemon | undefined;
 
@@ -35,5 +36,9 @@ export class CardComponent implements OnInit {
           this.data = data;
         }
       );
+  }
+
+  emmitCardClick(): void {
+    this.onClick.emit(this.data);
   }
 }

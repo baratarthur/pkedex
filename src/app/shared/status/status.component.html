@@ -1,4 +1,8 @@
 <div class="status">
     <span class="name">{{name}}</span>
-    <span class="value">{{value}}</span>
+    <span class="value"
+        [style.background-color]="'var('+backgroundColor+')'"
+        [style.color]="'var('+backgroundColor+'-accent)'">
+        {{value}}
+    </span>
 </div>

@@ -1,9 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 
-import { PokemonBasic } from '@model/Pokemon';
+import { Pokemon, PokemonBasic } from '@model/Pokemon';
 import { PokedexService } from '@service/pokedex.service';
 import { CardComponent } from '@component/card/card.component';
+import { Router } from '@angular/router';
 
 @Component({
   standalone: true,
@@ -12,7 +13,7 @@ import { CardComponent } from '@component/card/card.component';
   styleUrls: ['./home.component.scss'],
   imports: [
     CommonModule,
-    CardComponent,
+    CardComponent
   ]
 })
 export class HomeComponent implements OnInit {
@@ -22,9 +23,11 @@ export class HomeComponent implements OnInit {
 
   constructor(
     public pokedexService: PokedexService,
+    public router: Router,
   ) {}
 
   ngOnInit(): void {
+    this.pokedexService.clearPokemon();
     this.loadPokemons();
   }
 
@@ -43,4 +46,8 @@ export class HomeComponent implements OnInit {
       );
   }
   
+  navigateTo(pokemon: Pokemon): void {
+    this.pokedexService.setPokemon(pokemon);
+    this.router.navigate(['/pokemon']);
+  }
 }

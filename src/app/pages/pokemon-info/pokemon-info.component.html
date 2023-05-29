@@ -1,0 +1,31 @@
+<main>
+    <header>
+        <a routerLink="..">&larr; voltar</a>
+        <img [src]="pokemonImageUrl" [attr.alt]="pokemonName" loading="lazy">
+        <h1>{{pokemonName}}</h1>
+        <div class="types">
+            <app-type *ngFor="let type of types"
+                [type]="type"/>
+        </div>
+    </header>
+    <section class="status">
+        <header>
+            <h2>Status</h2>
+        </header>
+        <article>
+            <app-status *ngFor="let stat of stats"
+                [name]="stat.stat.name"
+                [value]="stat.base_stat"/>
+        </article>
+    </section>
+    <section class="abilities">
+        <header>
+            <h2>Abilities</h2>
+        </header>
+        <article>
+            <app-ability *ngFor="let ability of abilities"
+                [hidden]="ability.is_hidden"
+                [ability]="ability"/>
+        </article>
+    </section>
+</main>
